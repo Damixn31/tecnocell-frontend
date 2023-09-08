@@ -1,7 +1,7 @@
-import  ProductoList  from './components/ProductoList'
+import ProductosList from './components/Productos/ProductosList'
 
 function App () {
-  return <ProductoList />
+  return <ProductosList />
 }
 
 export default App;
