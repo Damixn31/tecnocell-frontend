@@ -14,7 +14,8 @@ function ProductosList() {
 //});
 
   return (
-    <div class="flex justify-center items-center h-screen">
+    <>
+  <div className="flex justify-center items-center h-screen">
   <table className="min-w-full border divide-y divide-grey-200">
   <thead>
     <tr className="hover-bg-gray-100">
@@ -41,6 +42,7 @@ function ProductosList() {
   </tbody>
 </table>
 </div>
+</>
   )
 }
 

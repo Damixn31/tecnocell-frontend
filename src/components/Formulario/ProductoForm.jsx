@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {useCreateProductoMutation} from '../../api/apiSlice'
+import Navbar from '../Navbar/Navbar'
 
 function ProductoFrom() {
 
@@ -39,8 +40,13 @@ function ProductoFrom() {
      };
 
   return (
+    <div>
+
+    <Navbar />
    <div className="flex justify-center items-center h-screen">
+
     <div className="max-w-xl mx-auto bg-black p-4 rounded shadow-md">
+
   <h2 className="text-xl font-semibold mb-4">Agregar Producto</h2>
   <form onSubmit={handleSubmit}>
     <div className="mb-4">
@@ -100,6 +106,8 @@ function ProductoFrom() {
       </button>
     </div>
   </form>
+
+    </div>
   </div>
 </div>
   )
