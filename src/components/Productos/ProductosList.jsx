@@ -1,10 +1,17 @@
 import {useGetProductosQuery} from '../../api/apiSlice';
 
 function ProductosList() {
+
   const {data: productos, isError, isLoading, error} = useGetProductosQuery();
 
   if(isLoading) return <div>Loading...</div>;
   else if(isError) return <div>Error: {error.message}</div>;
+
+//const fechaFormateada = new Date(producto.fecha).toLocaleDateString('es-ES', {
+//  year: 'numeric',
+//  month: 'long',
+//  day: 'numeric',
+//});
 
   return (
     <div class="flex justify-center items-center h-screen">
@@ -23,7 +30,7 @@ function ProductosList() {
       <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
         <td className="px-6 py-4 text-gray-800">{producto.nombre}</td>
         <td className="px-6 py-4 text-gray-800">{producto.imei}</td>
-        <td className="px-6 py-4 text-gray-800">{producto.precio}</td>
+        <td className="px-6 py-4 text-gray-800">${producto.precio}</td>
         <td className="px-6 py-4 text-gray-800">{producto.fecha}</td>
         <td className="px-6 py-4 text-gray-800">
           <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mr-2 rounded">Eliminar</button>
