@@ -1,8 +1,9 @@
-import {useGetProductosQuery} from '../../api/apiSlice';
+import {useGetProductosQuery, useDeleteProductoMutation} from '../../api/apiSlice';
 
 function ProductosList() {
 
   const {data: productos, isError, isLoading, error} = useGetProductosQuery();
+  const [deleteProducto] = useDeleteProductoMutation();
 
   if(isLoading) return <div>Loading...</div>;
   else if(isError) return <div>Error: {error.message}</div>;
@@ -34,7 +35,7 @@ function ProductosList() {
         <td className="px-6 py-4 text-gray-800">${producto.precio}</td>
         <td className="px-6 py-4 text-gray-800">{producto.fecha}</td>
         <td className="px-6 py-4 text-gray-800">
-          <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mr-2 rounded">Eliminar</button>
+          <button onClick={() => deleteProducto(producto.id)} className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 mr-2 rounded">Eliminar</button>
           <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Editar</button>
         </td>
       </tr>

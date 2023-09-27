@@ -9,6 +9,7 @@ export const apiSlice = createApi({
     getProductos: builder.query({
       query: () => "/api/productos",
       providesTags: ["Productos"],
+      transformResponse: response => response.sort((a, b ) => b.id - a.id) 
     }),
     createProducto: builder.mutation({
       query: (newProducto) => ({
@@ -17,8 +18,15 @@ export const apiSlice = createApi({
         body: newProducto,
       }),
       invalidatesTags: ["Productos"],
-   })
+   }),
+    deleteProducto: builder.mutation({
+      query: (id) => ({
+        url: `/api/producto/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Productos"]
+    })
   }),
 });
 
-export const {useGetProductosQuery, useCreateProductoMutation} = apiSlice;
+export const {useGetProductosQuery, useCreateProductoMutation, useDeleteProductoMutation} = apiSlice;
